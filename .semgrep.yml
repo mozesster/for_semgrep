@@ -1,0 +1,11 @@
+# .semgrep.yml
+rules:
+  - id: insecure-subprocess
+    patterns:
+      - pattern: subprocess.call("ls " + $X, shell=True)
+    message: "Possible command injection via subprocess"
+    severity: ERROR
+    languages: [python]
+    metadata:
+      category: security
+      technology: subprocess
